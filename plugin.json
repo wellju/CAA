@@ -1,0 +1,9 @@
+{
+  "name": "sap-change-advisor",
+  "description": "Turns a raw SAP change request into a review-ready advisory: normalized requirement, gap questions, risk matrix, compliance checks, test cases and handover package.",
+  "version": "0.1.0",
+  "license": "GPL-2.0",
+  "keywords": ["sap", "hcm", "change-management", "advisory"],
+  "agents": "agents/",
+  "skills": "skills/"
+}
