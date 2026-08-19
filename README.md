@@ -61,7 +61,7 @@ signed in to the Copilot app, the CLI still needs its own login.
 ```bash
 git clone https://github.com/wellju/CAA.git
 cd CAA
-copilot plugin install .
+copilot plugin install ./
 ```
 
 Installing through the CLI is enough for both surfaces. It writes to
@@ -183,7 +183,7 @@ about your organization instead of about SAP in general.
 After editing, reinstall so the change takes effect:
 
 ```bash
-copilot plugin install .
+copilot plugin install ./
 ```
 
 The installer copies files, it does not link them. Edits do nothing until you
@@ -193,17 +193,18 @@ reinstall, in the app as well as in the terminal.
 
 | Symptom | Cause and fix |
 |---|---|
+| `Failed to install plugin: Invalid plugin spec` | You wrote `install .` instead of `install ./`. The trailing slash is what marks the argument as a path. |
 | `Error: No authentication information found.` | Not logged in. Run `copilot`, then `/login`. |
 | A skill is missing from `copilot skill list` | Its `SKILL.md` frontmatter failed to parse. A colon in an unquoted `description` is the usual cause; wrap the value in double quotes. |
-| Your edits have no effect | You did not reinstall. Run `copilot plugin install .` again. |
+| Your edits have no effect | You did not reinstall. Run `copilot plugin install ./` again. |
 | `Warning: Direct plugin installs are deprecated` | Expected. Local installs still work; GitHub plans to require marketplace installs eventually. |
-| Skills missing when mounted with `--plugin-dir .` | Observed but unexplained. Use `copilot plugin install .` instead. |
+| Skills missing when mounted with `--plugin-dir` | Observed but unexplained. Use `copilot plugin install ./` instead. |
 | The agent does not appear in the Copilot app | Restart the app. It reads the plugin directory at startup. |
 
 ## Quick reference
 
 ```bash
-copilot plugin install .          # install or refresh after editing
+copilot plugin install ./         # install or refresh after editing
 copilot skill list                # verify the seven skills loaded
 copilot --agent change-advisor    # start the agent in the terminal
 ```
